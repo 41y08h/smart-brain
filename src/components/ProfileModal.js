@@ -16,9 +16,9 @@ export default function ProfileModal({ user, setUser, toggleProfile }) {
       setIsUserUpdating(false);
     } else {
       fetch(
-        `${
-          process.env.REACT_APP_LOCAL_BACKEND_URL
-        }/profile/${sessionStorage.getItem("token")}`,
+        `${process.env.REACT_APP_BACKEND_URL}/profile/${sessionStorage.getItem(
+          "token"
+        )}`,
         {
           method: "POST",
           headers: {

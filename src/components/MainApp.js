@@ -34,9 +34,9 @@ export default function MainApp(props) {
     } else {
       // Check if token is correct and fetch the user
       fetch(
-        `${
-          process.env.REACT_APP_LOCAL_BACKEND_URL
-        }/profile/${sessionStorage.getItem("token")}`
+        `${process.env.REACT_APP_BACKEND_URL}/profile/${sessionStorage.getItem(
+          "token"
+        )}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -91,7 +91,7 @@ export default function MainApp(props) {
       }, 3000);
       return setNotification("Please submit image URL!");
     }
-    return fetch(`${process.env.REACT_APP_LOCAL_BACKEND_URL}/image`, {
+    return fetch(`${process.env.REACT_APP_BACKEND_URL}/image`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

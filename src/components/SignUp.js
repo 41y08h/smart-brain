@@ -18,7 +18,7 @@ export default function SignUp(props) {
   const signUpUser = (e) => {
     e.preventDefault();
     setIsSigningUp(true);
-    fetch(`${process.env.REACT_APP_LOCAL_BACKEND_URL}/api/user/signup`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/user/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
