@@ -24,7 +24,7 @@ export default function MainApp(props) {
   const [redirectTo, setRedirectTo] = useState("");
   const [user, setUser] = useState(null);
 
-  const viewProfile = () => {
+  const toggleProfile = () => {
     setIsProfileOpen(!isProfileOpen);
   };
 
@@ -129,14 +129,14 @@ export default function MainApp(props) {
           {isProfileOpen && (
             <Modal>
               <ProfileModal
-                viewProfile={viewProfile}
+                toggleProfile={toggleProfile}
                 user={user}
                 setUser={setUser}
               />
             </Modal>
           )}
           <Navbar>
-            <ProfileAvatar viewProfile={viewProfile} />
+            <ProfileAvatar toggleProfile={toggleProfile} />
           </Navbar>
           <main className="dashboard has-background-warning">
             <ProfileStatement name={user.name} submissions={user.submissions} />

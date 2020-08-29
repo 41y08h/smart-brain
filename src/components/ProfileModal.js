@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputField from "./InputField";
 import "../css/ProfileModal.css";
 
-export default function ProfileModal({ user, setUser, viewProfile }) {
+export default function ProfileModal({ user, setUser, toggleProfile }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +39,7 @@ export default function ProfileModal({ user, setUser, viewProfile }) {
             // Load updated user
             setUser({ ...user, ...data.user });
             // Close modal
-            viewProfile();
+            toggleProfile();
           } else if (data.error) {
             // Error updating user
             // Show notification
@@ -131,7 +131,7 @@ export default function ProfileModal({ user, setUser, viewProfile }) {
             </button>
             <div
               className="button is-light is-medium card-footer-item no-border-radius no-border"
-              onClick={viewProfile}
+              onClick={toggleProfile}
             >
               Close
             </div>
@@ -141,7 +141,7 @@ export default function ProfileModal({ user, setUser, viewProfile }) {
       <button
         className="modal-close modalToggle is-large"
         aria-label="close"
-        onClick={viewProfile}
+        onClick={toggleProfile}
       ></button>
     </div>
   );

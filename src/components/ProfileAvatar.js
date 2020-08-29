@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Redirect } from "react-router-dom";
 
-export default function ProfileAvatar(props) {
+export default function ProfileAvatar({ toggleProfile }) {
   const [isDropdownActive, setIsDropdownActive] = useState(false);
   const [redirectTo, setRedirectTo] = useState("");
 
@@ -41,7 +41,7 @@ export default function ProfileAvatar(props) {
               className="dropdown-item button no-border"
               id="viewProfile"
               onClick={() => {
-                props.viewProfile();
+                toggleProfile();
                 toggleDropDown();
               }}
             >
