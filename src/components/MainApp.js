@@ -5,6 +5,8 @@ import URLForm from "./URLForm";
 import Result from "./Result";
 import { Redirect } from "react-router-dom";
 import Preloader from "./Preloader/Preloader";
+import Navbar from "./Navbar";
+import ProfileAvatar from "./ProfileAvatar";
 
 export default function MainApp(props) {
   useEffect(() => {
@@ -115,26 +117,34 @@ export default function MainApp(props) {
       {isUserLoading ? (
         <Preloader />
       ) : (
-        <main className="dashboard has-background-warning">
-          <ProfileStatement
-            name={props.user.name}
-            submissions={props.user.submissions}
-          />
-          <URLForm recogniseImage={recogniseImage} isDetecting={isDetecting} />
-          {/* If there is any notification available, show to user */}
-          {notification && (
-            <div class="notification is-danger custom-app-notification">
-              <button
-                class="delete"
-                onClick={() => {
-                  setNotification("");
-                }}
-              ></button>
-              {notification}
-            </div>
-          )}
-          <Result imageURL={imageURL} faceBoxes={faceBoxes} />
-        </main>
+        <Fragment>
+          <Navbar>
+            <ProfileAvatar viewProfile={props.viewProfile} />
+          </Navbar>
+          <main className="dashboard has-background-warning">
+            <ProfileStatement
+              name={props.user.name}
+              submissions={props.user.submissions}
+            />
+            <URLForm
+              recogniseImage={recogniseImage}
+              isDetecting={isDetecting}
+            />
+            {/* If there is any notification available, show to user */}
+            {notification && (
+              <div class="notification is-danger custom-app-notification">
+                <button
+                  class="delete"
+                  onClick={() => {
+                    setNotification("");
+                  }}
+                ></button>
+                {notification}
+              </div>
+            )}
+            <Result imageURL={imageURL} faceBoxes={faceBoxes} />
+          </main>
+        </Fragment>
       )}
     </Fragment>
   );

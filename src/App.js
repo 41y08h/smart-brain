@@ -2,7 +2,6 @@ import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Modal from "./components/Modal";
 import ProfileModal from "./components/ProfileModal";
-import Navbar from "./components/Navbar";
 import AccountForms from "./components/AccountForms";
 import MainApp from "./components/MainApp";
 
@@ -25,13 +24,17 @@ export default function App() {
             />
           </Modal>
         )}
-        <Navbar viewProfile={viewProfile} />
-        <Route exact path={["/", "/signup"]} render={() => <AccountForms />} />
+        <Route exact path={["/", "/signup"]} component={AccountForms} />
         <Route
           exact
           path="/app"
           render={() => (
-            <MainApp title="Smart Brain" user={user} setUser={setUser} />
+            <MainApp
+              title="Smart Brain"
+              user={user}
+              setUser={setUser}
+              viewProfile={viewProfile}
+            />
           )}
         />
       </Router>
