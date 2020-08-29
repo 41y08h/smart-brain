@@ -29,12 +29,12 @@ export default function MainApp(props) {
   };
 
   useEffect(() => {
-    if (!sessionStorage.getItem("token")) {
+    if (!localStorage.getItem("token")) {
       setRedirectTo("/");
     } else {
       // Check if token is correct and fetch the user
       fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/profile/${sessionStorage.getItem(
+        `${process.env.REACT_APP_BACKEND_URL}/profile/${localStorage.getItem(
           "token"
         )}`
       )
@@ -46,7 +46,7 @@ export default function MainApp(props) {
             setIsUserLoading(false);
           } else if (data.error) {
             // Client's token is wrong so delete it
-            sessionStorage.removeItem("token");
+            localStorage.removeItem("token");
             setRedirectTo("/");
           }
         });
@@ -97,7 +97,7 @@ export default function MainApp(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        token: sessionStorage.getItem("token"),
+        token: localStorage.getItem("token"),
         imageurl: URL,
       }),
     })

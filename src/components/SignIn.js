@@ -31,7 +31,7 @@ export default function SignIn(props) {
       .then((data) => {
         if (!data.error && data.token && data.user) {
           // Signin successful, store token
-          sessionStorage.setItem("token", data.token);
+          localStorage.setItem("token", data.token);
           setIsSigningIn(false);
         } else if (data.error) {
           // Error signing in user
@@ -45,7 +45,7 @@ export default function SignIn(props) {
   return (
     <Fragment>
       {/* If token already exists, then redirect to /app route */}
-      {sessionStorage.getItem("token") && <Redirect to="/app" />}
+      {localStorage.getItem("token") && <Redirect to="/app" />}
 
       <h1 className="title">Sign In</h1>
       <h2 className="subtitle">To use SmartBrain App</h2>

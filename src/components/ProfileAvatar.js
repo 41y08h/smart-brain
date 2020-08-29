@@ -10,7 +10,7 @@ export default function ProfileAvatar({ toggleProfile }) {
   };
 
   const signOut = () => {
-    sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
     setRedirectTo("/");
   };
   return (
