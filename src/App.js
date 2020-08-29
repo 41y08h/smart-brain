@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AccountForms from "./components/AccountForms";
 import MainApp from "./components/MainApp";
-import "./css/App.css";
 
 export default function App() {
   return (
