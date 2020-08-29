@@ -1,0 +1,39 @@
+.modal .card {
+  border-radius: 10px;
+}
+
+.nofification-custom {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  cursor: pointer;
+  display: none;
+}
+
+.notify {
+  -webkit-animation: slide 400ms ease;
+          animation: slide 400ms ease;
+  display: unset;
+}
+
+@-webkit-keyframes slide {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes slide {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}

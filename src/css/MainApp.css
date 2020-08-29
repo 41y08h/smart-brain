@@ -1,0 +1,17 @@
+main.dashboard {
+  text-align: center;
+  min-height: 100vh;
+  padding-top: 8rem;
+}
+
+.image-url-field {
+  display: flex;
+  justify-content: center !important;
+  margin-top: 2rem;
+}
+
+.custom-app-notification {
+  width: 380px;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+}

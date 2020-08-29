@@ -1,0 +1,15 @@
+.result-box {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+#resultImage {
+  border-radius: 10px;
+}
+
+.bounding-box {
+  border: 1px solid blue;
+  position: absolute;
+  z-index: 20;
+}
