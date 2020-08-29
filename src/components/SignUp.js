@@ -57,9 +57,9 @@ export default function SignUp(props) {
       <div className="container">
         {/* If there is any notification available, show to user */}
         {notification && (
-          <div class="notification is-danger">
+          <div className="notification is-danger">
             <button
-              class="delete"
+              className="delete"
               onClick={() => {
                 setNotification("");
               }}

@@ -146,9 +146,9 @@ export default function MainApp(props) {
             />
             {/* If there is any notification available, show to user */}
             {notification && (
-              <div class="notification is-danger custom-app-notification">
+              <div className="notification is-danger custom-app-notification">
                 <button
-                  class="delete"
+                  className="delete"
                   onClick={() => {
                     setNotification("");
                   }}
