@@ -7,18 +7,26 @@ import { Redirect } from "react-router-dom";
 import Preloader from "./Preloader/Preloader";
 import Navbar from "./Navbar";
 import ProfileAvatar from "./ProfileAvatar";
+import Modal from "./Modal";
+import ProfileModal from "./ProfileModal";
 
 export default function MainApp(props) {
   useEffect(() => {
     document.title = props.title;
   }, [props.title]);
 
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [imageURL, setImageURL] = useState("");
   const [faceBoxes, setFaceBoxes] = useState([]);
   const [isDetecting, setIsDetecting] = useState(false);
   const [isUserLoading, setIsUserLoading] = useState(true);
   const [notification, setNotification] = useState("");
   const [redirectTo, setRedirectTo] = useState("");
+  const [user, setUser] = useState(null);
+
+  const viewProfile = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
 
   useEffect(() => {
     if (!sessionStorage.getItem("token")) {
@@ -34,7 +42,7 @@ export default function MainApp(props) {
         .then((data) => {
           if (data.user && !data.error) {
             // RESPONSE IS OK
-            props.setUser(data.user);
+            setUser(data.user);
             setIsUserLoading(false);
           } else if (data.error) {
             // Client's token is wrong so delete it
@@ -97,9 +105,9 @@ export default function MainApp(props) {
       .then((data) => {
         if (data && !data.error) {
           setFaceBoxes(processFaceData(data));
-          props.setUser({
-            ...props.user,
-            submissions: props.user.submissions + 1,
+          setUser({
+            ...user,
+            submissions: user.submissions + 1,
           });
         } else if (data.error) {
           setNotification(data.error);
@@ -118,14 +126,20 @@ export default function MainApp(props) {
         <Preloader />
       ) : (
         <Fragment>
+          {isProfileOpen && (
+            <Modal>
+              <ProfileModal
+                viewProfile={viewProfile}
+                user={user}
+                setUser={setUser}
+              />
+            </Modal>
+          )}
           <Navbar>
-            <ProfileAvatar viewProfile={props.viewProfile} />
+            <ProfileAvatar viewProfile={viewProfile} />
           </Navbar>
           <main className="dashboard has-background-warning">
-            <ProfileStatement
-              name={props.user.name}
-              submissions={props.user.submissions}
-            />
+            <ProfileStatement name={user.name} submissions={user.submissions} />
             <URLForm
               recogniseImage={recogniseImage}
               isDetecting={isDetecting}
