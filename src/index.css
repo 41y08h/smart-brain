@@ -53,3 +53,7 @@ nav {
 .no-border {
   border: none;
 }
+
+::placeholder {
+  color: #929292 !important;
+}
