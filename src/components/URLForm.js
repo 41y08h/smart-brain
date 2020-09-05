@@ -8,7 +8,7 @@ export default function URLForm({ recogniseImage, isDetecting }) {
         <input
           className="input is-medium"
           type="text"
-          placeholder="Enter a image url"
+          placeholder="Enter an image url"
           onChange={(e) => {
             setURL(e.target.value);
           }}
