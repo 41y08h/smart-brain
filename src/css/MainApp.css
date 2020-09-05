@@ -1,6 +1,7 @@
 main.dashboard {
   text-align: center;
   min-height: 100vh;
+  padding: 0 2rem;
   padding-top: 8rem;
 }
 
